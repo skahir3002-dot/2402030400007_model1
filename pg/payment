@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment | AmdavadStay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background: #eef4ff; }
+        .custom-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
+        .nav-link { color: #111 !important; font-weight: 600; }
+        .nav-link:hover { color: #0d6efd !important; }
+        .payment-container { max-width: 550px; margin: 60px auto; background: white; border-radius: 25px; padding: 35px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+        .payment-header { text-align: center; margin-bottom: 30px; }
+        .payment-header h2 { font-weight: bold; color: #111827; }
+        .payment-header p { color: #666; }
+        .amount-display { background: #f0f7ff; border: 2px dashed #0d6efd; border-radius: 15px; padding: 15px; text-align: center; margin-bottom: 25px; }
+        .amount-display h3 { color: #0d6efd; font-weight: bold; margin: 0; }
+        .method-box { border: 2px solid #e2e8f0; border-radius: 15px; padding: 15px; margin-bottom: 15px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 15px; }
+        .method-box:hover { border-color: #0d6efd; background: #f8fafc; }
+        .method-box.active { border-color: #0d6efd; background: #f0f7ff; }
+        .method-box input[type="radio"] { width: 20px; height: 20px; cursor: pointer; }
+        .method-label { font-weight: bold; font-size: 16px; margin: 0; cursor: pointer; }
+        .form-control { border-radius: 10px; padding: 12px; margin-bottom: 15px; border: 1px solid #cbd5e1; }
+        .pay-now-btn { width: 100%; border: none; background: linear-gradient(135deg, #0d6efd, #00c6ff); color: white; padding: 14px; border-radius: 12px; font-weight: bold; font-size: 18px; margin-top: 20px; transition: 0.3s; }
+        .pay-now-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3); }
+        .footer-link { display: block; color: #aaa; text-decoration: none; margin: 5px 0; }
+        .footer-link:hover { color: white; }
+        footer { background: #111827; color: #ccc; margin-top: 80px; padding: 50px 0; }
+        
+        /* Validation Error Style */
+        .invalid-feedback { display: none; color: #dc3545; font-size: 14px; margin-top: -10px; margin-bottom: 10px; padding-left: 5px; }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg custom-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand text-primary fw-bold" href="home.html">AmdavadStay</a>
+        </div>
+    </nav>
+
+    <!-- PAYMENT BOX -->
+    <div class="container">
+        <div class="payment-container">
+            <div class="payment-header">
+                <h2>Secure Checkout 🔒</h2>
+                <p>Choose a payment method to complete booking</p>
+            </div>
+
+            <!-- Amount Showcase -->
+            <div class="amount-display">
+                <p class="text-muted small mb-1">Total Payable Amount</p>
+                <h3 id="payableAmount">₹ 0</h3>
+            </div>
+
+            <!-- PAYMENT FORM -->
+            <form id="paymentForm" novalidate>
+                
+                <!-- Method 1: UPI -->
+                <div class="method-box active" id="upiBox">
+                    <input type="radio" name="payMethod" id="upiRadio" value="upi" checked>
+                    <div>
+                        <p class="method-label">UPI (Google Pay / PhonePe)</p>
+                        <small class="text-muted">Pay instantly using your UPI ID</small>
+                    </div>
+                </div>
+                
+                <!-- UPI Input Section -->
+                <div id="upiSection">
+                    <input type="text" id="upiId" class="form-control" placeholder="Enter UPI ID (e.g., username@oksbi)">
+                    <div class="invalid-feedback" id="upiError">કૃપા કરીને સાચું UPI ID દાખલ કરો (દા.ત. abc@oksbi)</div>
+                </div>
+
+                <!-- Method 2: Card -->
+                <div class="method-box" id="cardBox">
+                    <input type="radio" name="payMethod" id="cardRadio" value="card">
+                    <div>
+                        <p class="method-label">Credit / Debit Card</p>
+                        <small class="text-muted">All major Indian cards supported</small>
+                    </div>
+                </div>
+                
+                <!-- Card Input Section -->
+                <div id="cardSection" style="display: none;">
+                    <input type="text" id="cardNumber" class="form-control" placeholder="Card Number (16 digits)" maxlength="19">
+                    <div class="invalid-feedback" id="cardNumError">કૃપા કરીને ૧૬ આંકડાનો સાચો કાર્ડ નંબર લખો</div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="text" id="cardExpiry" class="form-control" placeholder="MM/YY" maxlength="5">
+                            <div class="invalid-feedback" id="cardExpiryError">સાચી એક્સપાયરી ડેટ (MM/YY) લખો</div>
+                        </div>
+                        <div class="col-6">
+                            <input type="password" id="cardCvv" class="form-control" placeholder="CVV" maxlength="3">
+                            <div class="invalid-feedback" id="cardCvvError">૩ આંકડાનો CVV લખો</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="pay-now-btn">Confirm & Pay Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="text-white">AmdavadStay</h5>
+                    <p>Premium PG platform in Ahmedabad.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Quick Links</h5>
+                    <a class="footer-link" href="../sk/home.html">Home</a>
+                    <a class="footer-link" href="../sk/details.html">Find PG</a>
+                    <a class="footer-link" href="../sk/login.html">Login</a>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Support</h5>
+                    <a class="footer-link" href="../sk/contect.html">Contact</a>
+                     <a class="footer-link" href="../sk/policy.html">Privacy & Terms</a>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="text-white">Contact</h5>
+                    <p>Ahmedabad</p>
+                    <p>+91 70000 11111</p>
+                </div>
+            </div>
+            <hr style="border-color:#444;">
+            <p class="text-center small">© Made By Shivani J Kambariya</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            
+            let bookingData = JSON.parse(localStorage.getItem("lastBooking")) || [];
+            let total = 0;
+
+            bookingData.forEach(item => {
+                let priceNumber = parseInt(String(item.price).replace(/[^0-9]/g, '')) || 0;
+                let qty = item.qty || 1;
+                total += priceNumber * qty;
+            });
+
+            document.getElementById("payableAmount").innerText = "₹ " + total.toLocaleString('en-IN');
+
+            // -----------------------------------------------------
+            // UI Toggle Logic
+            // -----------------------------------------------------
+            const upiRadio = document.getElementById('upiRadio');
+            const cardRadio = document.getElementById('cardRadio');
+            const upiBox = document.getElementById('upiBox');
+            const cardBox = document.getElementById('cardBox');
+            const upiSection = document.getElementById('upiSection');
+            const cardSection = document.getElementById('cardSection');
+
+            upiBox.addEventListener('click', function() {
+                upiRadio.checked = true;
+                togglePaymentSections();
+            });
+
+            cardBox.addEventListener('click', function() {
+                cardRadio.checked = true;
+                togglePaymentSections();
+            });
+
+            function togglePaymentSections() {
+                if (upiRadio.checked) {
+                    upiSection.style.display = 'block';
+                    cardSection.style.display = 'none';
+                    upiBox.classList.add('active');
+                    cardBox.classList.remove('active');
+                    clearErrors();
+                } else {
+                    upiSection.style.display = 'none';
+                    cardSection.style.display = 'block';
+                    cardBox.classList.add('active');
+                    upiBox.classList.remove('active');
+                    clearErrors();
+                }
+            }
+
+            function clearErrors() {
+                document.querySelectorAll('.invalid-feedback').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.form-control').forEach(el => el.classList.remove('is-invalid'));
+            }
+
+            // -----------------------------------------------------
+            // Auto Format Inputs
+            // -----------------------------------------------------
+            document.getElementById('cardNumber').addEventListener('input', function (e) {
+                let target = e.target;
+                let position = target.selectionStart;
+                let value = target.value.replace(/\D/g, '');
+                let formatted = value.match(/.{1,4}/g)?.join(' ') || value;
+                
+                target.value = formatted;
+               
+                if(target.newValueLength !== formatted.length) {
+                    target.setSelectionRange(position, position);
+                }
+            });
+
+            document.getElementById('cardExpiry').addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 2) {
+                    e.target.value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                } else {
+                    e.target.value = value;
+                }
+            });
+
+            document.getElementById('cardCvv').addEventListener('input', function (e) {
+                e.target.value = e.target.value.replace(/\D/g, ''); // ફક્ત આંકડા જ સ્વીકારશે
+            });
+
+            // -----------------------------------------------------
+            // FORM VALIDATION ON SUBMIT
+            // -----------------------------------------------------
+            document.getElementById("paymentForm").addEventListener("submit", function (e) {
+                e.preventDefault(); 
+                clearErrors();
+                
+                let isValid = true;
+
+                if (upiRadio.checked) {
+                    // UPI ID Validation
+                    let upiId = document.getElementById('upiId').value.trim();
+                    let upiPattern = /^[\w.-]+@[\w.-]+$/; 
+                    if (upiId === "" || !upiPattern.test(upiId)) {
+                        document.getElementById('upiId').classList.add('is-invalid');
+                        document.getElementById('upiError').style.display = 'block';
+                        isValid = false;
+                    }
+                } else {
+                    let cardNum = document.getElementById('cardNumber').value.replace(/\s/g, '');
+                    let expiry = document.getElementById('cardExpiry').value.trim();
+                    let cvv = document.getElementById('cardCvv').value.trim();
+
+                    if (cardNum.length !== 16) {
+                        document.getElementById('cardNumber').classList.add('is-invalid');
+                        document.getElementById('cardNumError').style.display = 'block';
+                        isValid = false;
+                    }
+
+                  
+                    let expiryPattern = /^(0[1-12]|1[0-2])\/([0-9]{2})$/;
+                    if (!expiryPattern.test(expiry)) {
+                        document.getElementById('cardExpiry').classList.add('is-invalid');
+                        document.getElementById('cardExpiryError').style.display = 'block';
+                        isValid = false;
+                    }
+
+                 
+                    if (cvv.length !== 3) {
+                        document.getElementById('cardCvv').classList.add('is-invalid');
+                        document.getElementById('cardCvvError').style.display = 'block';
+                        isValid = false;
+                    }
+                }
+
+              
+                if (isValid) {
+                    alert("Payment Successful! Your PG booking is confirmed. 🎉");
+                    window.location.href = "receipt.html"; 
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

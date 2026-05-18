@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Receipt | AmdavadStay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background: #eef4ff; }
+        .custom-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
+        .nav-link { color: #111 !important; font-weight: 600; }
+        .nav-link:hover { color: #0d6efd !important; }
+        .hero { background: linear-gradient(135deg, #0d6efd, #00c6ff); color: white; text-align: center; padding: 60px 20px; border-radius: 0 0 40px 40px; position: relative; overflow: hidden; }
+        .circle { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.15); animation: float 6s infinite ease-in-out; }
+        .c1 { width: 140px; height: 140px; top: 30px; left: -30px; }
+        .c2 { width: 110px; height: 110px; top: 70px; right: -30px; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+        .receipt-box { max-width: 650px; margin: 50px auto; background: white; border-radius: 25px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+        .receipt-header { text-align: center; border-bottom: 1px dashed #ccc; padding-bottom: 15px; margin-bottom: 20px; }
+        .receipt-header h2 { font-weight: bold; }
+        .detail { display: flex; justify-content: space-between; margin: 10px 0; font-size: 16px; }
+        .label { color: #666; }
+        .value { font-weight: bold; }
+        .total { margin-top: 20px; padding: 15px; background: linear-gradient(135deg, #0d6efd, #00c6ff); color: white; border-radius: 15px; text-align: center; }
+        .btn-custom { width: 100%; margin-top: 20px; padding: 12px; border: none; border-radius: 12px; background: #111827; color: white; font-weight: bold; }
+        footer { background: #111827; color: #ccc; margin-top: 60px; padding: 50px 0; }
+        .footer-link { display: block; color: #aaa; text-decoration: none; margin: 6px 0; }
+        .footer-link:hover { color: white; }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg custom-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand text-primary fw-bold" href="home.html">AmdavadStay</a>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link px-3" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="details.html">Find PG</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="cart.html">Cart</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <h1>Booking Confirmed 🎉</h1>
+        <p>Your payment was successful</p>
+    </section>
+
+    <!-- RECEIPT -->
+    <div class="container">
+        <div class="receipt-box">
+            <div class="receipt-header">
+                <h2>AmdavadStay Receipt</h2>
+                <p>Thank you for your booking</p>
+            </div>
+
+            <div class="detail">
+                <span class="label">Booking ID</span>
+                <span class="value" id="bid"></span>
+            </div>
+
+            <div class="detail">
+                <span class="label">PG Name</span>
+                <span class="value" id="pgname">Loading...</span>
+            </div>
+
+            <div class="detail">
+                <span class="label">Location</span>
+                <span class="value" id="pglocation">Ahmedabad</span>
+            </div>
+
+            <div class="detail">
+                <span class="label">Check-in Date</span>
+                <span class="value" id="date"></span>
+            </div>
+
+            <div class="detail">
+                <span class="label">Payment Method</span>
+                <span class="value">UPI / Card</span>
+            </div>
+
+            <div class="total">
+                <h4>Total Paid</h4>
+                <h2 id="amount">₹ 0</h2>
+            </div>
+
+            <button class="btn-custom" onclick="window.print()">
+                Download Receipt
+            </button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="text-white">AmdavadStay</h5>
+                    <p>Premium PG platform in Ahmedabad.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Quick Links</h5>
+                    <a class="footer-link" href="home.html">Home</a>
+                    <a class="footer-link" href="details.html">Find PG</a>
+                    <a class="footer-link" href="cart.html">Cart</a>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white">Support</h5>
+                    <a class="footer-link" href="contact.html">Contact</a>
+                        <a class="footer-link" href="../sk/policy.html">Privacy & Terms</a>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="text-white">Contact</h5>
+                    <p>Ahmedabad</p>
+                    <p>+91 70000 11111</p>
+                </div>
+            </div>
+            <hr style="border-color:#444;">
+            <p class="text-center small">© Made By Shivani J Kambariya</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        
+       
+        document.getElementById("bid").innerText = "AS" + Date.now().toString().slice(-5);
+        document.getElementById("date").innerText = new Date().toLocaleDateString();
+
+     
+        let bookingData = JSON.parse(localStorage.getItem("lastBooking")) || [];
+
+        if (bookingData.length === 0) {
+            document.getElementById("pgname").innerText = "No PG Selected";
+            document.getElementById("amount").innerText = "₹ 0";
+            return;
+        }
+
+        let total = 0;
+        let pgNames = [];
+        let pgLocations = [];
+
+        bookingData.forEach(item => {
+       
+            pgNames.push(item.title);
+            
+            if(item.location) {
+                pgLocations.push(item.location.replace("📍", "").trim());
+            }
+
+          
+            let price = parseInt(item.price) || 0;
+            let qty = parseInt(item.qty) || 1;
+            total += price * qty;
+        });
+
+      
+        document.getElementById("pgname").innerText = pgNames.join(", ");
+        if(pgLocations.length > 0) {
+            document.getElementById("pglocation").innerText = pgLocations.join(", ");
+        }
+        document.getElementById("amount").innerText = "₹ " + total.toLocaleString('en-IN');
+
+        localStorage.removeItem("pgCart");
+    });
+    </script>
+</body>
+</html>

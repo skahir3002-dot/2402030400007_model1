@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AmdavadStay | Premium PGs</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#eef3ff;
+}
+
+/* NAVBAR */
+
+.custom-nav{
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(10px);
+    box-shadow:0 4px 20px rgba(0,0,0,0.08);
+}
+
+.navbar-brand{
+    font-size:32px;
+    font-weight:bold;
+}
+
+.nav-link{
+    color:#111 !important;
+    font-weight:600;
+}
+
+.nav-link:hover{
+    color:#0d6efd !important;
+}
+
+.cart-btn{
+    background:linear-gradient(135deg,#0d6efd,#00c6ff);
+    color:white;
+    padding:10px 22px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.cart-btn:hover{
+    color:white;
+}
+
+.login-btn{
+    background:#111827;
+    color:white;
+    padding:10px 20px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.login-btn:hover{
+    background:#0d6efd;
+    color:white;
+}
+
+/* HERO */
+
+.hero{
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    color:white;
+    text-align:center;
+    padding:90px 20px;
+    border-radius:0 0 40px 40px;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero h1{
+    font-size:55px;
+    font-weight:bold;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,0.2);
+    animation:float 6s infinite ease-in-out;
+}
+
+.c1{
+    width:140px;
+    height:140px;
+    top:20px;
+    left:5%;
+}
+
+.c2{
+    width:90px;
+    height:90px;
+    bottom:20px;
+    right:10%;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-20px);
+    }
+}
+
+.search-box{
+    max-width:650px;
+    margin:auto;
+    margin-top:25px;
+    display:flex;
+    gap:10px;
+}
+
+.search-box input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+}
+
+.search-box button{
+    border:none;
+    padding:14px 22px;
+    border-radius:12px;
+    background:black;
+    color:white;
+    font-weight:bold;
+}
+
+/* SECTION */
+
+.section-title{
+    font-size:38px;
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+/* CARDS */
+
+.pg-card{
+    background:white;
+    border:none;
+    border-radius:22px;
+    overflow:hidden;
+    transition:0.4s;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.pg-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+.pg-card img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    transition:0.4s;
+}
+
+.pg-card:hover img{
+    transform:scale(1.05);
+}
+
+.price-tag{
+    position:absolute;
+    top:15px;
+    right:15px;
+    background:linear-gradient(135deg,#0d6efd,#00c6ff);
+    color:white;
+    padding:8px 16px;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+.feature{
+    display:inline-block;
+    background:#eef3ff;
+    padding:5px 12px;
+    border-radius:10px;
+    margin:4px;
+    font-size:13px;
+}
+
+.btn-view{
+    width:100%;
+    border:none;
+    background:linear-gradient(135deg,#0d6efd,#00c6ff);
+    color:white;
+    padding:13px;
+    border-radius:14px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+/* DETAILS PAGE */
+
+.details-page{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#f8fbff;
+    z-index:999999;
+    overflow-y:auto;
+    display:none;
+}
+
+.details-header{
+    background:white;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.close-page{
+    font-size:40px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.details-content{
+    padding:30px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+.main-img{
+    height:520px !important;
+}
+
+.info-box{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    margin-top:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.pg-title{
+    font-size:42px;
+    font-weight:bold;
+    color:#0d6efd;
+}
+
+.pg-price{
+    font-size:34px;
+    color:#16a34a;
+    font-weight:bold;
+}
+
+.big-feature{
+    display:inline-block;
+    padding:10px 18px;
+    margin:8px;
+    border-radius:30px;
+    background:#dbeafe;
+    color:#0d6efd;
+    font-weight:bold;
+}
+
+.book-btn{
+    width:100%;
+    border:none;
+    padding:16px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#0d6efd,#00c6ff);
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    margin-top:25px;
+}
+
+/* SUCCESS POPUP */
+
+.success-popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.3);
+    z-index:9999999;
+    text-align:center;
+    display:none;
+    width:90%;
+    max-width:400px;
+}
+
+.success-popup h2{
+    color:#16a34a;
+}
+
+.success-popup button{
+    border:none;
+    background:#0d6efd;
+    color:white;
+    padding:12px 30px;
+    border-radius:12px;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111827;
+    color:#ccc;
+    margin-top:70px;
+    padding:50px 0;
+}
+
+.footer-link{
+    display:block;
+    color:#aaa;
+    text-decoration:none;
+    margin:6px 0;
+}
+
+.footer-link:hover{
+    color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.gallery{
+    grid-template-columns:1fr;
+}
+
+.main-img{
+    height:300px !important;
+}
+
+.hero h1{
+    font-size:35px;
+}
+
+.pg-title{
+    font-size:30px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg custom-nav sticky-top">
+
+<div class="container">
+
+<a class="navbar-brand text-primary">
+AmdavadStay
+</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link px-3" href="home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="details.html">Find PG</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="contect.html">Contect</a></li>
+      
+        <li class="nav-item">
+  <a class="nav-link px-3" href="cart.html">
+    
+    <!-- CART SVG ICON -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" style="margin-right:5px;">
+      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L1.01 2H.5a.5.5 0 0 1-.5-.5zM3.14 4l1.25 6h8.22l1.25-6H3.14z"/>
+      <path d="M5.5 13a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+    </svg>
+
+    Cart
+  </a>
+</li>
+<li class="nav-item"><a class="nav-link px-3" href="login.html">Login</a></li>
+      </ul>
+    </div>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+
+<h1>
+Find Best PGs in Ahmedabad
+</h1>
+
+<p>
+Comfortable • Affordable • Safe Living Spaces
+</p>
+
+<div class="search-box">
+
+<input type="text" placeholder="Search location...">
+
+<button>
+Search
+</button>
+
+</div>
+
+</section>
+
+<!-- MAIN -->
+
+<div class="container my-5">
+
+<h2 class="section-title">
+Popular PGs
+</h2>
+
+<div class="row g-4">
+
+<!-- CARD 1 -->
+
+<div class="col-md-4">
+
+<div class="card pg-card">
+
+<div class="position-relative">
+
+<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
+
+<div class="price-tag">
+₹12,000
+</div>
+
+</div>
+
+<div class="card-body">
+
+<h4>Sky Residency</h4>
+
+<p class="text-muted">
+📍 Satellite, Ahmedabad
+</p>
+
+<p>
+Luxury PG with AC rooms, WiFi, food and laundry services.
+</p>
+
+<div>
+
+<span class="feature">WiFi</span>
+<span class="feature">AC</span>
+<span class="feature">Food</span>
+
+</div>
+
+<button class="btn-view openDetails">
+View Details
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD 2 -->
+
+<div class="col-md-4">
+
+<div class="card pg-card">
+
+<div class="position-relative">
+
+<img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc">
+
+<div class="price-tag">
+₹11,000
+</div>
+
+</div>
+
+<div class="card-body">
+
+<h4>Comfort Stay</h4>
+
+<p class="text-muted">
+📍 Vastrapur
+</p>
+
+<p>
+Modern PG with premium cleaning and peaceful rooms.
+</p>
+
+<div>
+
+<span class="feature">Cleaning</span>
+<span class="feature">WiFi</span>
+<span class="feature">AC</span>
+
+</div>
+
+<button class="btn-view openDetails">
+View Details
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD 3 -->
+
+<div class="col-md-4">
+
+<div class="card pg-card">
+
+<div class="position-relative">
+
+<img src="https://images.unsplash.com/photo-1615873968403-89e068629265">
+
+<div class="price-tag">
+₹13,500
+</div>
+
+</div>
+
+<div class="card-body">
+
+<h4>Elite Residency</h4>
+
+<p class="text-muted">
+📍 SG Highway
+</p>
+
+<p>
+Premium interiors with rooftop seating and smart security.
+</p>
+
+<div>
+
+<span class="feature">Security</span>
+<span class="feature">Laundry</span>
+<span class="feature">Rooftop</span>
+
+</div>
+
+<button class="btn-view openDetails">
+View Details
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD 4 -->
+
+<div class="col-md-4">
+
+<div class="card pg-card">
+
+<div class="position-relative">
+
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85">
+
+<div class="price-tag">
+₹10,500
+</div>
+
+</div>
+
+<div class="card-body">
+
+<h4>Royal Nest</h4>
+
+<p class="text-muted">
+📍 Navrangpura
+</p>
+
+<p>
+Affordable PG with healthy food and spacious rooms.
+</p>
+
+<div>
+
+<span class="feature">Food</span>
+<span class="feature">Parking</span>
+<span class="feature">WiFi</span>
+
+</div>
+
+<button class="btn-view openDetails">
+View Details
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD 5 -->
+
+<div class="col-md-4">
+
+<div class="card pg-card">
+
+<div class="position-relative">
+
+<img src="https://images.unsplash.com/photo-1484154218962-a197022b5858">
+
+<div class="price-tag">
+₹14,000
+</div>
+
+</div>
+
+<div class="card-body">
+
+<h4>Urban Stay</h4>
+
+<p class="text-muted">
+📍 Prahlad Nagar
+</p>
+
+<p>
+Stylish PG with modern furniture and gym facilities.
+</p>
+
+<div>
+
+<span class="feature">Gym</span>
+<span class="feature">WiFi</span>
+<span class="feature">Security</span>
+
+</div>
+
+<button class="btn-view openDetails">
+View Details
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD 6 -->
+
+<div class="col-md-4">
+
+<div class="card pg-card">
+
+<div class="position-relative">
+
+<img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688">
+
+<div class="price-tag">
+₹15,000
+</div>
+
+</div>
+
+<div class="card-body">
+
+<h4>Green Leaf PG</h4>
+
+<p class="text-muted">
+📍 Bodakdev
+</p>
+
+<p>
+Premium living with garden view and luxury facilities.
+</p>
+
+<div>
+
+<span class="feature">Garden</span>
+<span class="feature">AC</span>
+<span class="feature">Laundry</span>
+
+</div>
+
+<button class="btn-view openDetails">
+View Details
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- DETAILS PAGE -->
+
+<div class="details-page" id="detailsPage">
+
+<div class="details-header">
+
+<h3 class="text-primary fw-bold">
+AmdavadStay
+</h3>
+
+<div class="close-page" id="closePage">
+×
+</div>
+
+</div>
+
+<div class="container details-content">
+
+<div class="gallery">
+
+<img id="mainImage" class="main-img"
+src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
+
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85">
+
+<img src="https://images.unsplash.com/photo-1484154218962-a197022b5858">
+
+<img src="https://images.unsplash.com/photo-1494526585095-c41746248156">
+
+<img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688">
+
+</div>
+
+<div class="info-box">
+
+<h1 class="pg-title" id="detailTitle">
+Sky Residency
+</h1>
+
+<p class="text-muted fs-5" id="detailLocation">
+📍 Satellite, Ahmedabad
+</p>
+
+<div class="pg-price" id="detailPrice">
+₹12,000 / Month
+</div>
+
+<p id="detailDesc">
+Luxury PG with AC rooms, WiFi, food and laundry services.
+</p>
+
+<h4 class="mt-4">
+Facilities
+</h4>
+
+<div>
+
+<span class="big-feature">Free WiFi</span>
+<span class="big-feature">Air Conditioner</span>
+<span class="big-feature">Laundry</span>
+<span class="big-feature">Security</span>
+<span class="big-feature">Parking</span>
+<span class="big-feature">Food Included</span>
+
+</div>
+
+<h4 class="mt-4">
+About PG
+</h4>
+
+<p>
+This premium PG provides modern rooms with stylish interiors,
+healthy food service, security and comfortable living experience
+for students and working professionals in Ahmedabad.
+</p>
+
+<button class="book-btn" id="bookNow">
+Book Now
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SUCCESS POPUP -->
+
+<div class="success-popup" id="successPopup"></div>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4">
+
+<h5 class="text-white">
+AmdavadStay
+</h5>
+
+<p>
+Premium PG platform in Ahmedabad.
+</p>
+
+</div>
+
+<div class="col-md-3">
+
+<h5 class="text-white">
+Quick Links
+</h5>
+
+<a class="footer-link">
+Home
+</a>
+
+<a class="footer-link">
+Find PG
+</a>
+
+<a class="footer-link">
+Login
+</a>
+
+</div>
+
+<div class="col-md-3">
+
+<h5 class="text-white">
+Support
+</h5>
+
+<a class="footer-link">
+Contact
+</a>
+
+     <a class="footer-link" href="../sk/policy.html">Privacy & Terms</a>
+
+</div>
+
+<div class="col-md-2">
+
+<h5 class="text-white">
+Contact
+</h5>
+
+<p>
+Ahmedabad
+</p>
+
+<p>
++91 70000 11111
+</p>
+
+</div>
+
+</div>
+
+<hr style="border-color:#444;">
+
+<p class="text-center small">
+© Made By Shivani J Kambariya
+</p>
+
+</div>
+
+</footer>
+
+<script>
+
+   
+/* ELEMENTS */
+const detailsPage = document.getElementById("detailsPage");
+const closePage = document.getElementById("closePage");
+
+const detailTitle = document.getElementById("detailTitle");
+const detailLocation = document.getElementById("detailLocation");
+const detailPrice = document.getElementById("detailPrice");
+const detailDesc = document.getElementById("detailDesc");
+
+const mainImage = document.getElementById("mainImage");
+const cards = document.querySelectorAll(".pg-card");
+const successPopup = document.getElementById("successPopup");
+
+/* CURRENT PG */
+let currentPG = {};
+
+/* OPEN DETAILS PAGE */
+cards.forEach(card => {
+
+    const btn = card.querySelector(".openDetails");
+
+    btn.addEventListener("click", () => {
+
+        const img = card.querySelector("img").src;
+        const title = card.querySelector("h4").innerText;
+        const location = card.querySelector(".text-muted").innerText;
+        const priceText = card.querySelector(".price-tag").innerText;
+        const desc = card.querySelectorAll("p")[1].innerText;
+
+        const cleanPrice = Number(priceText.replace(/[^0-9]/g, ""));
+
+        /* SET DETAILS */
+        mainImage.src = img;
+        detailTitle.innerText = title;
+        detailLocation.innerText = location;
+        detailPrice.innerText = priceText + " / Month";
+        detailDesc.innerText = desc;
+
+        /* SAVE CURRENT PG */
+        currentPG = {
+            img: img,
+            title: title,
+            location: location,
+            price: cleanPrice,
+            desc: desc,
+            qty: 1
+        };
+
+        /* SHOW PAGE */
+        detailsPage.style.display = "block";
+    });
+
+});
+
+/* CLOSE DETAILS PAGE */
+closePage.addEventListener("click", () => {
+    detailsPage.style.display = "none";
+});
+
+/* BOOK NOW */
+document.getElementById("bookNow").addEventListener("click", () => {
+
+    let cart = JSON.parse(localStorage.getItem("pgCart")) || [];
+
+    /* CHECK EXIST */
+    let exists = cart.some(item =>
+        item.title.toLowerCase() === currentPG.title.toLowerCase()
+    );
+
+    if (!exists) {
+
+       if (currentPG) {
+    let cart = JSON.parse(localStorage.getItem("pgCart")) || [];
+
+    cart.push({
+        img: currentPG.img,
+        title: currentPG.title,
+        location: currentPG.location,
+        price: Number(currentPG.price),
+        qty: 1
+    });
+
+    localStorage.setItem("pgCart", JSON.stringify(cart));
+
+}
+        successPopup.innerHTML = `
+            <h2 style="color:#16a34a;">🎉 Booking Successful</h2>
+            <p>${currentPG.title} added successfully.</p>
+            <button onclick="closePopup()"
+            style="border:none;background:#0d6efd;color:white;padding:12px 30px;border-radius:12px;">
+            OK</button>
+        `;
+
+    } else {
+
+        successPopup.innerHTML = `
+            <h2 style="color:#ff9800;">⚠ Already Added</h2>
+            <p>${currentPG.title} already in cart.</p>
+            <button onclick="closePopup()"
+            style="border:none;background:#0d6efd;color:white;padding:12px 30px;border-radius:12px;">
+            OK</button>
+        `;
+    }
+
+    successPopup.style.display = "block";
+
+});
+
+/* CLOSE POPUP */
+function closePopup() {
+    successPopup.style.display = "none";
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

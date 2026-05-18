@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy & Terms | AmdavadStay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background: #f4f7ff; color: #333; }
+        .custom-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
+        .nav-link { color: #111 !important; font-weight: 600; }
+        .nav-link:hover { color: #0d6efd !important; }
+        
+        /* HERO HEADER */
+        .policy-header { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; padding: 60px 20px; text-align: center; border-radius: 0 0 40px 40px; }
+        .policy-header h1 { font-weight: bold; font-size: 36px; }
+        
+        /* TABS STYLING */
+        .nav-pills .nav-link-tab { background: #fff; color: #4facfe; border: 2px solid #4facfe; border-radius: 12px; font-weight: bold; padding: 10px 25px; transition: 0.3s; margin: 0 10px; cursor: pointer; text-decoration: none; display: inline-block; }
+        .nav-pills .nav-link-tab.active, .nav-pills .nav-link-tab:hover { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white !important; border-color: transparent; }
+
+        /* POLICY CONTENT CONTAINER */
+        .policy-container { max-width: 850px; margin: -30px auto 60px; background: white; border-radius: 25px; padding: 40px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
+        .policy-section h3 { font-weight: bold; color: #111827; margin-top: 30px; margin-bottom: 15px; font-size: 20px; }
+        .policy-section p, .policy-section li { color: #4b5563; line-height: 1.7; font-size: 15px; }
+        .policy-section ul { padding-left: 20px; }
+        .last-updated { font-size: 13px; color: #9ca3af; margin-bottom: 25px; text-align: center; }
+
+        footer { background: #111827; color: #ccc; margin-top: 80px; padding: 50px 0; }
+        .footer-link { display: block; color: #aaa; text-decoration: none; margin: 5px 0; }
+        .footer-link:hover { color: white; }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER / NAVBAR -->
+    <nav class="navbar navbar-expand-lg custom-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand text-primary fw-bold fs-3" href="home.html">AmdavadStay</a>
+        </div>
+    </nav>
+
+    <!-- POLICY HERO -->
+    <section class="policy-header">
+        <h1>Legal & Policies</h1>
+        <p class="mb-0">Please read our Privacy Policy and Terms of Service carefully</p>
+    </section>
+
+    <!-- TAB SWITCHER BUTTONS -->
+    <div class="container text-center my-4">
+        <div class="nav nav-pills justify-content-center">
+            <button class="nav-link-tab active" id="privacyBtn" onclick="switchTab('privacy')">Privacy Policy</button>
+            <button class="nav-link-tab" id="termsBtn" onclick="switchTab('terms')">Terms of Service</button>
+        </div>
+    </div>
+
+    <!-- POLICY CONTENT -->
+    <div class="container">
+        <div class="policy-container">
+            <p class="last-updated">Last Updated: May 2026</p>
+
+            <!-- PRIVACY POLICY SECTION -->
+            <div id="privacySection" class="policy-section">
+                <h2 class="fw-bold text-center text-primary mb-4">Privacy Policy</h2>
+                <p>Welcome to AmdavadStay. We value your trust and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you visit our platform to find PG accommodations in Ahmedabad.</p>
+
+                <h3>1. Information We Collect</h3>
+                <p>When you use AmdavadStay, book a PG room, or fill out forms on our website, we may collect the following information:</p>
+                <ul>
+                    <li>Personal Details: Name, Email Address, Contact Number, and Gender.</li>
+                    <li>Booking Information: Preferred PG location, sharing type, monthly budget, and check-in date.</li>
+                    <li>Payment Details: UPI ID or partial card metadata processed through our secure validation window (we never store complete payment pins or passwords).</li>
+                </ul>
+
+                <h3>2. How We Use Your Information</h3>
+                <p>The information we collect is strictly utilized to deliver and improve our services:</p>
+                <ul>
+                    <li>To verify your PG bookings and process your payments safely.</li>
+                    <li>To connect you seamlessly with the verified PG owners in Ahmedabad.</li>
+                    <li>To respond to your support queries submitted via our Contact system.</li>
+                </ul>
+
+                <h3>3. Data Security</h3>
+                <p>Your data security is our top priority. We use secure servers and standard encryption frameworks to keep your personal records hidden from unauthorized access. Our interactive payment validation ensures your payment workflows remain fully secure.</p>
+
+                <h3>4. Cookies Policy</h3>
+                <p>We use essential cookies to maintain your active login sessions and remember temporary configurations like your selected PG matches or your local booking cart contents.</p>
+            </div>
+
+            <!-- TERMS OF SERVICE SECTION (Hidden by Default) -->
+            <div id="termsSection" class="policy-section" style="display: none;">
+                <h2 class="fw-bold text-center text-primary mb-4">Terms of Service</h2>
+                <p>By browsing, accessing, or utilizing the AmdavadStay portal, you acknowledge that you accept and agree to follow the terms and conditions outlined below.</p>
+
+                <h3>1. User Accounts & Responsibilities</h3>
+                <p>To book a PG listing on our website, you may be required to register a profile. You are completely responsible for safeguarding your login credentials and ensuring all information supplied on your forms remains accurate and authentic.</p>
+
+                <h3>2. PG Bookings & Payment Terms</h3>
+                <ul>
+                    <li>All pricing values listed across our local properties (starting at ₹5,000/month onwards) are governed directly by individual landlords.</li>
+                    <li>When you process a token deposit using our secure system, it guarantees a temporary reservation. Complete documentation and pending dynamic monthly rents must be closed directly with the property operator.</li>
+                    <li>Users are expected to fulfill our local verification checks before moving into any property.</li>
+                </ul>
+
+                <h3>3. Cancellation & Refund Guidelines</h3>
+                <p>Token booking refunds are subjected to specific timelines. If you cancel your scheduled PG booking within 48 hours of reservation, a complete or partial token return can be initiated through our support desk, provided you haven't checked into the room yet.</p>
+
+                <h3>4. Limitation of Liability</h3>
+                <p>While AmdavadStay reviews all property profiles to present verified listings, we serve as an interface connecting tenants with landlords. We are not directly responsible for unexpected personal adjustments, code violations, or disputes that arise inside the properties post-possession.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="text-white fw-bold mb-3">AmdavadStay</h5>
+                    <p>Premium PG finder platform across Ahmedabad, providing hassle-free room match services.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white fw-bold mb-3">Quick Links</h5>
+                    <a class="footer-link" href="../sk/home.html">Home</a>
+                    <a class="footer-link" href="../sk/details.html">Find PG</a>
+                    <a class="footer-link" href="../sk/login.html">Login</a>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white fw-bold mb-3">Support</h5>
+                    <a class="footer-link" href="../sk/contect.html">Contact</a>
+                    <a class="footer-link" href="../sk/policy.html">Privacy & Terms</a>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="text-white fw-bold mb-3">Contact</h5>
+                    <p class="mb-1">Ahmedabad</p>
+                    <p>+91 70000 11111</p>
+                </div>
+            </div>
+            <hr style="border-color:#444;">
+            <p class="text-center small mb-0">© Made By Shivani J Kambariya</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR TOGGLING SECTIONS -->
+    <script>
+        function switchTab(tabName) {
+            const privacySection = document.getElementById('privacySection');
+            const termsSection = document.getElementById('termsSection');
+            const privacyBtn = document.getElementById('privacyBtn');
+            const termsBtn = document.getElementById('termsBtn');
+
+            if (tabName === 'privacy') {
+                privacySection.style.display = 'block';
+                termsSection.style.display = 'none';
+                privacyBtn.classList.add('active');
+                termsBtn.classList.remove('active');
+            } else {
+                privacySection.style.display = 'none';
+                termsSection.style.display = 'block';
+                termsBtn.classList.add('active');
+                privacyBtn.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+
+</html>
